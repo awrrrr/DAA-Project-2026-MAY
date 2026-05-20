@@ -8,7 +8,16 @@ public class AStarSolver {
         this.map = map;
     }
 
+    public int getVisitedNodesCount() {
+        return visitedNodesCount;
+    }
+
     public List<Node> findPath(int startX, int startY, int goalX, int goalY) {
+        if (!map.isWalkable(startX, startY) || !map.isWalkable(goalX, goalY)) {
+            visitedNodesCount = 0;
+            return null;
+        }
+
         PriorityQueue<Node> openList = new PriorityQueue<>(Comparator.comparingDouble(n -> n.fCost));
         boolean[][] closedSet = new boolean[map.getRows()][map.getCols()];
         

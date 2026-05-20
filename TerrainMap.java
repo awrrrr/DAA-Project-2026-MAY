@@ -31,6 +31,17 @@ public class TerrainMap {
         return new TerrainMap(forestGrid);
     }
 
+    public static TerrainMap createTrappedMap() {
+        int[][] trappedGrid = {
+            { 0,  0,  0, -1,  0},
+            { 0,  0,  0, -1,  0},
+            { 0,  0,  0, -1,  0},
+            {-1, -1, -1, -1,  0},
+            { 0,  0,  0,  0,  0}
+        };
+        return new TerrainMap(trappedGrid);
+    }
+
     public void printGrid() {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
@@ -67,5 +78,9 @@ public class TerrainMap {
             case -1: return Double.POSITIVE_INFINITY;
             default: return Double.POSITIVE_INFINITY;
         }
+    }
+
+    public boolean isWalkable(int x, int y) {
+        return !Double.isInfinite(getTerrainCost(x, y));
     }
 }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A* Path Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="app">
+        <section class="topbar">
+            <div>
+                <p class="eyebrow">DAA Project Demo</p>
+                <h1>A* Path Planner</h1>
+            </div>
+            <div class="status" id="status">Ready</div>
+        </section>
+
+        <section class="layout">
+            <aside class="panel">
+                <label class="field">
+                    <span>Map</span>
+                    <select id="mapSelect">
+                        <option value="city">City roads</option>
+                        <option value="forest">Forest terrain</option>
+                        <option value="trapped">Blocked path</option>
+                    </select>
+                </label>
+
+                <div class="mode-group" aria-label="Cell selection mode">
+                    <button class="mode active" data-mode="start">Set Start</button>
+                    <button class="mode" data-mode="goal">Set Goal</button>
+                </div>
+
+                <div class="coordinates">
+                    <div>
+                        <span>Start</span>
+                        <strong id="startLabel">(0, 0)</strong>
+                    </div>
+                    <div>
+                        <span>Goal</span>
+                        <strong id="goalLabel">(5, 6)</strong>
+                    </div>
+                </div>
+
+                <button class="primary" id="runButton">Find path</button>
+                <button class="secondary" id="resetButton">Reset points</button>
+
+                <div class="legend">
+                    <span><i class="road"></i> Road</span>
+                    <span><i class="gravel"></i> Gravel</span>
+                    <span><i class="grass"></i> Grass</span>
+                    <span><i class="wall"></i> Blocked</span>
+                    <span><i class="path"></i> Path</span>
+                </div>
+            </aside>
+
+            <section class="workspace">
+                <div class="grid-wrap">
+                    <div class="grid" id="grid"></div>
+                </div>
+
+                <div class="metrics">
+                    <div>
+                        <span>Travel time</span>
+                        <strong id="travelTime">-</strong>
+                    </div>
+                    <div>
+                        <span>Visited nodes</span>
+                        <strong id="visitedNodes">-</strong>
+                    </div>
+                    <div>
+                        <span>Path length</span>
+                        <strong id="pathLength">-</strong>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
